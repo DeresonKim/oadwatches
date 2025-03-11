@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAD Watches - Luxury Watch Sourcing</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+        
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b88746, #fdf5a6);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Featured watches */
+        .featured {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(135deg, #b88746, #fdf5a6);
+        }
+        
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .watch-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .watch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .watch-image {
+            width: 100%;
+            height: 250px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1rem;
+        }
+        
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .watch-details {
+            padding: 20px;
+        }
+        
+        .watch-brand {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .watch-model {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        
+        /* Brand logos */
+        .brands {
+            padding: 60px 0;
+            background-color: #181818;
+        }
+        
+        .brand-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .brand-logo {
+            width: 140px;
+            height: 80px;
+            background-color: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .brand-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Services */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #b88746;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* About */
+        .about {
+            padding: 80px 0;
+            background-color: #181818;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            background-color: #2a2a2a;
+            height: 400px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        
+        .contact-info a {
+            color: #b88746;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #b88746;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 30px 0;
+            text-align: center;
+            color: #666;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-logo {
+                width: 100px;
+                height: 60px;
+            }
+            
+            .brand-logos {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">OAD WATCHES</div>
+            <div class="tagline">Exceptional Timepieces, Extraordinary Service</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Luxury Watch Sourcing</h1>
+            <p>We specialize in sourcing rare and exquisite timepieces from the world's most prestigious watchmakers. Experience the art of horology at its finest.</p>
+            <a href="#contact" class="cta-button">INQUIRE NOW</a>
+        </div>
+    </section>
+
+    <!-- Featured Watches -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">FEATURED TIMEPIECES</h2>
+            <div class="watches-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./Rolex Day Date.png" alt="Rolex Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">ROLEX</div>
+                        <div class="watch-model">Daytona Cosmograph</div>
+                    </div>
+                </div>
+                
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./Audemars Piguet Royal Oak Offshore.png" alt="Audemars Piguet Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">AUDEMARS PIGUET</div>
+                        <div class="watch-model">Royal Oak Offshore</div>
+                    </div>
+                </div>
+                
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./Patek Philippe Nautillus.png" alt="Patek Philippe Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">PATEK PHILIPPE</div>
+                        <div class="watch-model">Nautilus</div>
+                    </div>
+                </div>
+                
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./richard mille rm027.png" alt="IWC Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">IWC</div>
+                        <div class="watch-model">Portugieser Chronograph</div>
+                    </div>
+                </div>
+                
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./cartier de santos.png" alt="Cartier Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">CARTIER</div>
+                        <div class="watch-model">Santos de Cartier</div>
+                    </div>
+                </div>
+                
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <!-- Replace with actual image path -->
+                        <img src="./hublot big bang.png" alt="Hublot Watch">
+                    </div>
+                    <div class="watch-details">
+                        <div class="watch-brand">HUBLOT</div>
+                        <div class="watch-model">Big Bang</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="brands">
+        <div class="container">
+            <h2 class="section-title">PRESTIGIOUS BRANDS</h2>
+            <div class="brand-logos">
+                <div class="brand-logo">ROLEX</div>
+                <div class="brand-logo">AUDEMARS PIGUET</div>
+                <div class="brand-logo">PATEK PHILIPPE</div>
+                <div class="brand-logo">IWC</div>
+                <div class="brand-logo">CARTIER</div>
+                <div class="brand-logo">HUBLOT</div>
+                <div class="brand-logo">TUDOR</div>
+                <div class="brand-logo">OMEGA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">OUR SERVICES</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⌚</div>
+                    <h3 class="service-title">WIDE COLLECTION</h3>
+                    <p>We locate and acquire rare and limited edition timepieces that are difficult to find through traditional channels.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Authentication Services</h3>
+                    <p>Our experts meticulously authenticate every timepiece to ensure you receive a genuine luxury watch.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌎</div>
+                    <h3 class="service-title">SOURCE INTERNATIONALLY</h3>
+                    <p>Secure and insured worldwide shipping for your valuable timepieces directly to your doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Replace with actual image path -->
+                    <img src="./OAD WATCH TEAM IMAGE THIS IS THE IMAGE TO USE FOR THAT PAGE.jpg" alt="OAD Watches Team">
+                </div>
+                <div class="about-text">
+                    <h2>OAD Watches Team</h2>
+                    <p>OAD Watches has been dedicated to sourcing the finest timepieces with complete authenticity. We operate with integrity, ensuring a seamless, hassle-free experience for our clients. Our focus is simple—delivering exceptional watches effortlessly, where cost is never a constraint.</p>
+                    <p>With years of experience and a global network of contacts, we've built relationships with trusted suppliers worldwide. This enables us to source even the most exclusive and limited edition models from prestigious watchmakers.</p>
+                    <p>Our commitment to authenticity, discretion, and personalized service sets us apart in the industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">CONTACT US</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p><strong>Phone/WhatsApp:</strong></p>
+                    <p>+61 468 556 171 (Dereson Kim)</p>
+                    <p>+61 401 922 422 (Omar Sultani)</p>
+                    <p>IG (oadwatches)</p>
+                    <p><strong>Email:</strong> oadwatches@gmail.com</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">TW</a>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>How We Work</h3>
+                    <p>Simply reach out to us with your watch requirements. We handle everything from sourcing to shipping, ensuring a seamless experience.</p>
+                    <p>Our team is available 24/7 to assist with any inquiries and provide updates on your order status.</p>
+                    <p>Discretion and confidentiality are guaranteed with every transaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 OAD Watches. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Basic animation for watch cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const watchCards = document.querySelectorAll('.watch-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 0;
+                        setTimeout(() => {
+                            entry.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                            entry.target.style.opacity = 1;
+                        }, 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            watchCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
